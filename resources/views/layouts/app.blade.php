@@ -9,7 +9,9 @@
 </head>
 <body>
     @include('layouts.header')
+    <div>
     @yield('content')
+    </div>
     @include('layouts.footer')
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
