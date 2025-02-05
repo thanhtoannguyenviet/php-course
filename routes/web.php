@@ -20,4 +20,9 @@ Route::get('/posts/{id}', [PostsController::class,'detail'])
     ->where('id', '[0-9]+')
     ->name('posts.detail');
 Route::get('/posts/create', [PostsController::class,'create'])->name('posts.create');
+Route::get('/posts/{id}/edit', [PostsController::class,'edit'])
+    ->where('id', '[0-9]+')
+    ->name('posts.edit');
+Route::put('/posts/{id}', [PostsController::class,'editAction'])->name('posts.editAction');
 Route::post('/posts', [PostsController::class,'store'])->name('posts.store');
+Route::delete('/posts/{id}', [PostsController::class,'delete'])->name('posts.delete');

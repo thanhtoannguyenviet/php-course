@@ -37,4 +37,26 @@ class PostsController extends Controller
         DB::insert('insert into posts (title, content, email) values (?, ?,?)', [$title, $content, $email]);
         return redirect('/posts');
     }
+    
+    public function edit($id)
+    {
+        $post = DB::table('posts')->where('id', $id)->first();
+        return view('posts.edit',[
+            'post' => $post
+        ]);
+    }
+
+    public function editAction(Request $request, $id)
+    {
+        $title = $request->input('title');
+        $content = $request->input('content');
+        $email = $request->input('email');
+        DB::update('update posts set title = ?, content = ?, email = ? where id = ?', [$title, $content, $email, $id]);
+        return redirect('/posts');
+    }
+    public function delete($id)
+    {
+        DB::delete('delete from posts where id = ?', [$id]);
+        return redirect('/posts');
+    }
 }
